@@ -1,0 +1,269 @@
+openapi: 3.0.0
+info:
+  title: User
+  contact: {}
+  version: '1.0'
+servers:
+- url: http://localhost:5000/api
+  variables: {}
+paths:
+  /users:
+    get:
+      tags:
+      - Misc
+      summary: getAllUser
+      operationId: getAllUser
+      parameters: []
+      responses:
+        '200':
+          description: ''
+          headers: {}
+      deprecated: false
+    post:
+      tags:
+      - Misc
+      summary: createUser
+      operationId: createUser
+      parameters: []
+      requestBody:
+        description: ''
+        content:
+          application/json:
+            schema:
+              allOf:
+              - $ref: '#/components/schemas/createUserRequest'
+              - example:
+                  name: Minh Hoang
+                  password: '123456'
+                  birthday: 21/08/2001
+                  gender: Female
+                  email: hoang01@gmail.com
+                  phone: '0921213133'
+                  role: CLIENT
+            example:
+              name: Doremon
+              password: '123456'
+              birthday: 21/08/2001
+              gender: Female
+              email: doremon123@gmail.com
+              phone: '0999999999'
+              role: CLIENT
+        required: true
+      responses:
+        '200':
+          description: ''
+          headers: {}
+      deprecated: false
+  /users/3:
+    get:
+      tags:
+      - Misc
+      summary: getUserById
+      operationId: getUserById
+      parameters: []
+      responses:
+        '200':
+          description: ''
+          headers: {}
+      deprecated: false
+    delete:
+      tags:
+      - Misc
+      summary: deleteUser
+      operationId: deleteUser
+      parameters: []
+      responses:
+        '200':
+          description: ''
+          headers: {}
+      deprecated: false
+  /users/search/minh:
+    get:
+      tags:
+      - Misc
+      summary: getUserBySearchName
+      operationId: getUserBySearchName
+      parameters: []
+      responses:
+        '200':
+          description: ''
+          headers: {}
+      deprecated: false
+  /users/getUserPagination/pageIndex=2/pageSize=3:
+    get:
+      tags:
+      - Misc
+      summary: getUserPagination
+      operationId: getUserPagination
+      parameters: []
+      responses:
+        '200':
+          description: ''
+          headers: {}
+      deprecated: false
+  /users/4:
+    put:
+      tags:
+      - Misc
+      summary: updateUserById
+      operationId: updateUserById
+      parameters: []
+      requestBody:
+        description: ''
+        content:
+          application/json:
+            schema:
+              allOf:
+              - $ref: '#/components/schemas/updateUserByIdRequest'
+              - example:
+                  name: MinhHoang
+                  birthday: 21/08/2001
+                  gender: Female
+                  email: hoang01@gmail.com
+                  phone: '0921213133'
+                  role: CLIENT
+            example:
+                  name: MinhHoang
+                  birthday: 21/08/2001
+                  gender: Female
+                  email: hoang01@gmail.com
+                  phone: '0921213133'
+                  role: CLIENT
+        required: true
+      responses:
+        '200':
+          description: ''
+          headers: {}
+      deprecated: false
+components:
+  schemas:
+    createUserRequest:
+      title: createUserRequest
+      required:
+      - name
+      - password
+      - birthday
+      - gender
+      - email
+      - phone
+      - role
+      type: object
+      properties:
+        name:
+          type: string
+        password:
+          type: string
+        birthday:
+          type: string
+        gender:
+          type: string
+        email:
+          type: string
+        phone:
+          type: string
+        role:
+          type: string
+      example:
+        name: loc minh
+        password: '123456'
+        birthday: 19/05/2000
+        gender: Female
+        email: tuanloc123@gmail.com
+        phone: '0938110045'
+        role: CLIENT
+    uploadAvatarRequest:
+      title: uploadAvatarRequest
+      required:
+      - name
+      - password
+      - birthday
+      - gender
+      - email
+      - phone
+      - role
+      type: object
+      properties:
+        name:
+          type: string
+        password:
+          type: string
+        birthday:
+          type: string
+        gender:
+          type: string
+        email:
+          type: string
+        phone:
+          type: string
+        role:
+          type: string
+      example:
+          name: MinhHoang
+          birthday: 21/08/2001
+          gender: Female
+          email: hoang01@gmail.com
+          phone: '0921213133'
+          role: CLIENT
+    updateUserByIdRequest:
+      title: updateUserByIdRequest
+      required:
+      - name
+      - password
+      - birthday
+      - gender
+      - phone
+      - role
+      type: object
+      properties:
+        name:
+          type: string
+        password:
+          type: string
+        birthday:
+          type: string
+        gender:
+          type: string
+        phone:
+          type: string
+        role:
+          type: string
+      example:
+          name: MinhHoang
+          birthday: 21/08/2001
+          gender: Female
+          email: hoang01@gmail.com
+          phone: '0921213133'
+          role: CLIENT
+    deleteUserRequest:
+      title: deleteUserRequest
+      required:
+      - name
+      - password
+      - birthday
+      - gender
+      - phone
+      - role
+      type: object
+      properties:
+        name:
+          type: string
+        password:
+          type: string
+        birthday:
+          type: string
+        gender:
+          type: string
+        phone:
+          type: string
+        role:
+          type: string
+      example:
+        name: MinhHoang
+        birthday: 21/08/2001
+        gender: Female
+        email: hoang01@gmail.com
+        phone: '0921213133'
+        role: CLIENT
+tags:
+- name: Misc
+  description: ''
